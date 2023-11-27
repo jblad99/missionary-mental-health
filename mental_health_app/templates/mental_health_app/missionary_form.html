@@ -1,9 +1,38 @@
 <!-- mental_health_app/templates/mental_health_app/missionary_form.html -->
-{% extends 'mental_health_app/base.html' %} {% block title %}Missionary Form
-{%endblock %} {% block content %}
-<h2>Missionary Form</h2>
-<form method="post" action="{% url 'missionary_form' %}">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Submit</button>
-</form>
+{% extends 'mental_health_app/base.html' %} 
+{% block title %}Missionary Form{% endblock %} 
+{% block content %}
+  <h2>Missionary Form</h2>
+  <form method="post" action="{% url 'missionary_form' %}">
+    {% csrf_token %}
+
+    <!-- Include a slider for mood -->
+    <label for="mood">Mood:</label>
+    <input type="range" id="mood" name="mood" min="1" max="5" value="3" step="1" />
+    <p>Mood: <span id="moodValue">3</span></p>
+
+    <!-- Descriptions for each mood increment -->
+    <div>
+      <label>1: Very Depressed</label>
+      <label>2: Low</label>
+      <label>3: Moderate</label>
+      <label>4: Good</label>
+      <label>5: Excellent</label>
+    </div>
+
+    <!-- Include the rest of the form fields -->
+    {{ form.as_p }}
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Update the mood value display when the slider changes
+    var moodSlider = document.getElementById("mood");
+    var moodValueDisplay = document.getElementById("moodValue");
+
+    moodSlider.addEventListener("input", function() {
+      moodValueDisplay.innerText = moodSlider.value;
+    });
+  </script>
 {% endblock %}
