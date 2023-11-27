@@ -1,0 +1,10 @@
+<!-- mental_health_app/templates/mental_health_app/missionary_detail.html -->
+{% extends 'mental_health_app/base.html' %} {% block title %} Missionary Detail
+{%endblock %} {% block content %}
+<br /><br />
+<h2>Missionary Detail</h2>
+<p>Name: {{ missionary.name }}</p>
+<p>Rating: {{ missionary.rating }}</p>
+<p>Message: {{ missionary.message }}</p>
+<p>Timestamp: {{ missionary.timestamp }}</p>
+{% endblock %}

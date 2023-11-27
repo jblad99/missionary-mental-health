@@ -1,0 +1,9 @@
+<!-- mental_health_app/templates/mental_health_app/missionary_form.html -->
+{% extends 'mental_health_app/base.html' %} {% block title %}Missionary Form
+{%endblock %} {% block content %}
+<h2>Missionary Form</h2>
+<form method="post" action="{% url 'missionary_form' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
