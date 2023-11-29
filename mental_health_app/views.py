@@ -5,18 +5,23 @@ from .models import Missionary, Response
 
 def missionary_form(request):
     if request.method == 'POST':
-            form = MissionaryForm()
+        form = MissionaryForm(request.POST)
+        if form.is_valid():
+            # Set the rating field to the mood slider value
+            form.instance.rating = form.cleaned_data['rating']
+            form.save()
+            return redirect('success_page')  # Redirect to a success page
     else:
         form = MissionaryForm()
 
     return render(request, 'mental_health_app/missionary_form.html', {'form': form})
-    #     form = MissionaryForm(request.POST)
-    #     if form.is_valid():
-    #         missionary = form.save()
-    #         return redirect('missionary_detail', pk=missionary.pk)
-    # else:
-    #     form = MissionaryForm()
-    # return render(request, 'mental_health_app/missionary_form.html', {'form': form})
+
+def success_page(request):
+    return render(request, 'mental_health_app/success_page.html')
+
+def missionary_responses(request):
+    missionaries = Missionary.objects.all()
+    return render(request, 'mental_health_app/missionary_responses.html', {'missionaries': missionaries})
 
 def missionary_detail(request, pk):
     missionary = Missionary.objects.get(pk=pk)
