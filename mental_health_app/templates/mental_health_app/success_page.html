@@ -1,0 +1,9 @@
+<!-- mental_health_app/templates/mental_health_app/success_page.html -->
+{% extends 'mental_health_app/base.html' %} 
+{% block title %}Form Submitted Successfully{% endblock %} 
+{% load static %}
+{% block content %}
+  <h2>Form Submitted Successfully</h2>
+  <p>Your form has been submitted successfully!</p>
+  <p><a href="{% url 'resources' %}">Go to Resources Page</a></p>
+{% endblock %}
