@@ -1,22 +1,22 @@
 <!-- in templates/mental_health_app/home.html -->
 
-{% extends 'mental_health_app/base.html' %} {% block title %} Missionary Detail
-{%endblock %} {% block content %}
+{% extends 'mental_health_app/base.html' %}
+{% block title %} Missionary Detail{%endblock %}
+{% load static %}
+
+
+{% block content %}
 <h1>Welcome to Missionary Mental Health</h1>
 <p>
   This is a space dedicated to supporting the mental health of missionaries.
 </p>
 
 <h2>Quick Links:</h2>
-<ul>
-  <li>
-    <a href="{% url 'missionary_form' %}"
-      >Submit a Request to Mission President</a
-    >
-  </li>
-  <li>
-    <a href="{% url 'resources' %}">Mental Health Resources</a>
-  </li>
-  <!-- Add more links as needed -->
-</ul>
+  <a href="{% url 'missionary_form' %}">
+    Submit a Request to Mission President
+  </a>
+  <br>
+  <a href="{% url 'resources' %}">
+    Mental Health Resources
+  </a>
 {% endblock %}
