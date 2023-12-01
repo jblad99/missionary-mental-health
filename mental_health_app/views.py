@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from .forms import MissionaryForm
 from .models import Missionary, Response
+from django.core.serializers import serialize
 
 def missionary_form(request):
     if request.method == 'POST':
@@ -21,7 +22,8 @@ def success_page(request):
 
 def missionary_responses(request):
     missionaries = Missionary.objects.all()
-    return render(request, 'mental_health_app/missionary_responses.html', {'missionaries': missionaries})
+    json_data = serialize('json', missionaries)
+    return render(request, 'mental_health_app/missionary_responses.html', {'missionaries': missionaries, 'asdf':json_data})
 
 def missionary_detail(request, pk):
     missionary = Missionary.objects.get(pk=pk)

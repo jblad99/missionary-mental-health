@@ -1,54 +1,83 @@
 <!-- mental_health_app/templates/mental_health_app/missionary_responses.html -->
-{% extends 'mental_health_app/base.html' %} 
-{% block title %}Missionary Responses{% endblock %} 
-{% block content %}
-  <h2>Missionary Responses</h2>
+{% extends 'mental_health_app/base.html' %} {% block title %}Missionary
+Responses{% endblock %} {% block content %}
+<h2>Missionary Responses</h2>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
 
-  <!-- Add inline styles for the table -->
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+<!-- Add inline styles for the table -->
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+</style>
+
+{% if missionaries %}
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Message</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for missionary in missionaries %}
+    <tr>
+      <td>{{ missionary.name }}</td>
+      <td>{{ missionary.rating }}</td>
+      <td>{{ missionary.message }}</td>
+      <td>{{ missionary.timestamp }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div><canvas id="chart"></canvas></div>
+{% else %}
+<p>No missionary responses available.</p>
+{% endif %}
+<script>
+    let missionaryData = {{asdf|safe}}
+    let labels = missionaryData.map(el => el.fields.name).filter((v, i, a) => a.indexOf(v) === i)
+    let mapped = missionaryData.map(el => ({name: el.fields.name, rating: el.fields.rating}));
+    let data = [];
+    labels.forEach(name =>{
+      let ratings = mapped.filter((el) => el.name === name).map(el => el.rating)
+      data.push(ratings.reduce((a, c) => a + c) / ratings.length)
+    });
+    let ctx = document.getElementById("chart").getContext("2d");
+
+  let chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+       labels: labels,
+       datasets: [
+          {
+            label: "Average Missionary Rating",
+            backgroundColor: "#79AEC8",
+            borderColor: "#417690",
+            data: data
+          }
+       ]
     }
+  });
+</script>
 
-    th, td {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    tr:hover {
-      background-color: #f5f5f5;
-    }
-  </style>
-
-  {% if missionaries %}
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Rating</th>
-          <th>Message</th>
-          <th>Timestamp</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for missionary in missionaries %}
-          <tr>
-            <td>{{ missionary.name }}</td>
-            <td>{{ missionary.rating }}</td>
-            <td>{{ missionary.message }}</td>
-            <td>{{ missionary.timestamp }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>No missionary responses available.</p>
-  {% endif %}
 {% endblock %}
