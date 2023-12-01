@@ -12,4 +12,3 @@ urlpatterns = [
     path('missionary/resources/', resources, name='resources'),
     path('missionary/connect_prof/', connect_prof, name='connect_prof'),
 ]
- 

@@ -48,7 +48,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" type="css" href="css/styles.css">
+    <link rel="stylesheet" type="css" href="css/styles.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -85,6 +85,11 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'resources' %}">Resources</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'connect_prof' %}"
+              >Connect with a Professional</a
+            >
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input
@@ -100,12 +105,12 @@
       </div>
     </nav>
 
-    <div class="container text-center">
-      {% block content %} {% endblock %}
-    </div>
+    <div class="container text-center">{% block content %} {% endblock %}</div>
 
-    {% comment %} <footer class="container text-center">
+    {% comment %}
+    <footer class="container text-center">
       <p>&copy; Company 2017-2020</p>
-    </footer> {% endcomment %}
+    </footer>
+    {% endcomment %}
   </body>
 </html>
