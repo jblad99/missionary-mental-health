@@ -1,0 +1,66 @@
+{% extends 'mental_health_app/base.html' %} {% block title %} Connect with a
+Professional{% endblock %} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<h1>Need to connect with a professional?</h1>
+<p>Look through qualified experts to see who would best suit your needs</p>
+
+<div class="professionals-list">
+  <h2>Mental Health Professionals</h2>
+
+  <ul>
+    <li>
+      <div class="professional-card">
+        <img src="{% static 'img/professional1.jpeg' %}" alt="Professional 1" />
+        <h3>
+          Dr. James Doe<span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span>
+        </h3>
+        <br />
+        <p>
+          Specialization: Anxiety, Depression<span>&nbsp;</span
+          ><span>&nbsp;</span><span>&nbsp;</span>
+        </p>
+        <br />
+        <br />
+        <p>Contact Information: (555) 555-5555</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="professional-card">
+        <img src="{% static 'img/professional2.jpeg' %}" alt="Professional 2" />
+        <h3>
+          Dr. John Smith<span>&nbsp;</span><span>&nbsp;</span
+          ><span>&nbsp;</span>
+        </h3>
+        <br />
+        <p>
+          Specialization: PTSD, Trauma<span>&nbsp;</span><span>&nbsp;</span
+          ><span>&nbsp;</span>
+        </p>
+        <br />
+        <p>Contact Information: (555) 555-5556</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="professional-card">
+        <img src="{% static 'img/professional3.jpeg' %}" alt="Professional 3" />
+        <h3>
+          Dr. Steven Jones<span>&nbsp;</span><span>&nbsp;</span
+          ><span>&nbsp;</span>
+        </h3>
+        <br />
+        <p>
+          Specialization: Addiction, Substance Abuse<span>&nbsp;</span
+          ><span>&nbsp;</span><span>&nbsp;</span>
+        </p>
+        <br />
+        <p>Contact Information: (555) 555-5557</p>
+      </div>
+    </li>
+  </ul>
+</div>
+{% endblock %}

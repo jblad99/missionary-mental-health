@@ -32,3 +32,6 @@ def resources(request):
 
 def home(request):
     return render(request, 'mental_health_app/home.html')
+
+def connect_prof(request):
+    return render(request, 'mental_health_app/connect_prof.html')

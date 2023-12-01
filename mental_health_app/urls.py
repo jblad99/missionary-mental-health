@@ -1,7 +1,7 @@
 # in urls.py
 
 from django.urls import path
-from .views import home, missionary_form, missionary_detail, resources, success_page, missionary_responses
+from .views import home, missionary_form, missionary_detail, resources, success_page, missionary_responses, connect_prof
 
 urlpatterns = [
     path('', home, name='home'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('missionary/responses/', missionary_responses, name='missionary_responses'),
     path('missionary/detail/<int:pk>/', missionary_detail, name='missionary_detail'),
     path('missionary/resources/', resources, name='resources'),
+    path('missionary/connect_prof/', connect_prof, name='connect_prof'),
 ]
