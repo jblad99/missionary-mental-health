@@ -10,38 +10,20 @@
  
     {{ form.name.label_tag }} {{ form.name }}
     <br>
-    <!-- Include a slider for mood -->
+    <!-- Replace slider with dropdown for mood -->
     <div class="mood-container">
-      <label for="rating"></label>
-      <p>Mood: <span id="ratingValue">5</span></p>
-      <input type="range" id="rating" name="rating" min="1" max="5" value="5" step="1" />
-      <img id="ratingImage" width="40" src="{% static 'img/' %}5.png" alt="Mood Image">
-    </div>
-
-    <!-- Descriptions for each mood increment -->
-    <div>
-      <label>1: Very Depressed</label>
-      <label>2: Low</label>
-      <label>3: Moderate</label>
-      <label>4: Good</label>
-      <label>5: Excellent</label>
+      <label for="rating">Mood:</label>
+      <select id="rating" name="rating">
+        <option value="1">Very Depressed</option>
+        <option value="2">Low</option>
+        <option value="3">Moderate</option>
+        <option value="4">Good</option>
+        <option value="5">Excellent</option>
+      </select>
     </div>
 
     {{ form.message.label_tag }} {{ form.message }}
     <br>
     <button type="submit">Submit</button>
   </form>
-
-  <script>
-    // Update the mood value display when the slider changes
-    var ratingSlider = document.getElementById("rating");
-    var ratingValueDisplay = document.getElementById("ratingValue");
-    var ratingImage = document.getElementById("ratingImage");
-
-    ratingSlider.addEventListener("input", function() {
-      var selectedMood = ratingSlider.value;
-      ratingValueDisplay.innerText = selectedMood;
-      ratingImage.src = "{% static 'img/' %}" + selectedMood + ".png";
-    });
-  </script>
 {% endblock %}

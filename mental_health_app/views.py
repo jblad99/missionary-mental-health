@@ -8,8 +8,6 @@ def missionary_form(request):
     if request.method == 'POST':
         form = MissionaryForm(request.POST)
         if form.is_valid():
-            # Set the rating field to the mood slider value
-            form.instance.rating = form.cleaned_data['rating']
             form.save()
             return redirect('success_page')  # Redirect to a success page
     else:
