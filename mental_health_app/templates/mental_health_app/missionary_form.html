@@ -18,14 +18,14 @@
       <img id="ratingImage" width="40" src="{% static 'img/' %}5.png" alt="Mood Image">
     </div>
 
-    <!-- Descriptions for each mood increment -->
+    {% comment %} <!-- Descriptions for each mood increment -->
     <div>
       <label>1: Very Depressed</label>
       <label>2: Low</label>
       <label>3: Moderate</label>
       <label>4: Good</label>
       <label>5: Excellent</label>
-    </div>
+    </div> {% endcomment %}
 
     {{ form.message.label_tag }} {{ form.message }}
     <br>
