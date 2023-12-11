@@ -67,28 +67,20 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}"
-              >Home <span class="sr-only">(current)</span></a
-            >
+          <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'missionary_form' %}"
-              >Missionary Form</a
-            >
+          <li class="nav-item {% if request.path == '/missionary/form/' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'missionary_form' %}">Missionary Form</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'missionary_responses' %}"
-              >Missionary Responses</a
-            >
+          <li class="nav-item {% if request.path == '/missionary/responses/' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'missionary_responses' %}">Missionary Responses</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if request.path == '/missionary/resources/' %}active{% endif %}">
             <a class="nav-link" href="{% url 'resources' %}">Resources</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'connect_prof' %}"
-              >Connect with a Professional</a
-            >
+          <li class="nav-item {% if request.path == '/missionary/connect_prof/' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'connect_prof' %}">Connect with a Professional</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
